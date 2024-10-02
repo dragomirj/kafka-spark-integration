@@ -16,5 +16,6 @@ void loop(){
   lpg = mq2.readLPG();
   co  = mq2.readCO();
   Serial.println(co); //Serial output is read by Raspberry Pi
+  delay(1000); //Wait for 1 second before the next read
 } //LOOP
 
