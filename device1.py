@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # *****************************************************************************
-#       Copyright (C) 2024 - Dragomir J. - IoT DEVICE_1 W/ MQTT! (DEVICE:1)
+#  Dragomir J. - IoT DEVICE_1 W/ MQTT! (DEVICE:1)
 # *****************************************************************************
 import os
 import time

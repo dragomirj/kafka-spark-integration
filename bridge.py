@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # *****************************************************************************
-#       Copyright (C) 2024 - Dragomir J. - MQTT CLIENT W/ K.PRODUCER
+#  Dragomir J. - MQTT CLIENT W/ KAFKA PRODUCER
 # *****************************************************************************
 import os
 import json
