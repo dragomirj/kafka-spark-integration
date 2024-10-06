@@ -32,7 +32,7 @@ def background_thread():
 # SOCKETIO - BROADCAST
 @socketio.event
 def broadcast_event(message):
-    emit('emit', {'message': message}, broadcast=True)
+    emit('emit', message, broadcast=True)
 
 # SOCKETIO - CONNECTION
 @socketio.event
