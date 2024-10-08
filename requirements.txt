@@ -16,7 +16,9 @@ Jinja2==3.1.4
 kazoo==2.5.0
 MarkupSafe==2.1.5
 paho-mqtt==2.1.0
+py4j==0.10.9.7
 pykafka==2.8.0
+pyspark==3.5.3
 python-dotenv==1.0.1
 python-engineio==4.9.1
 python-socketio==5.11.4
