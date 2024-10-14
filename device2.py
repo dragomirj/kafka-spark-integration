@@ -32,9 +32,8 @@ def getSerialInput():
 #############################################################################
 #   getSensorData - Get data from the MQ-2 sensor
 #############################################################################
-def getSensorData():
+def getSensorData(input):
     """ (RASPBERRY PI) Get the CO value from the MQ-2 sensor """
-    input = getSerialInput()
     if not DEBUG and input is not None:
         if input.in_waiting > 0:
             return float(input.readline().decode('utf-8').rstrip())
@@ -52,10 +51,13 @@ if __name__ == '__main__':
         print('NO .ENV FILE OR TOPIC IS EMPTY!!!')
         exit(0)
 
+    # Get Serial input (ONLY ONCE!)
+    input = getSerialInput() 
+    
     # INFINITE LOOP
     while True:
         try:
-            data = f'{getSensorData():.3f}'
+            data = f'{getSensorData(input):.3f}'
             mqtt.single(TOPIC, data, hostname = BROKER)
             print(f'MQTT: {str(data).rjust(7)} to topic {TOPIC}')
             if DEBUG: 
