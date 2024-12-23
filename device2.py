@@ -41,7 +41,7 @@ def getSensorData():
         return round(uniform(0, 999), 2) # Simulate read
     return None
 
-# EXECUTE VIA TERMINAL ONLY!
+# Execution is possible only from the terminal!!!
 if __name__ == '__main__':
     if DEBUG:
         print('DEBUG MODE IS ON!!!\n')
@@ -51,7 +51,7 @@ if __name__ == '__main__':
         print('NO .ENV FILE OR TOPIC IS EMPTY!!!')
         exit(0)
 
-    # LOOP
+    # INFINITE LOOP
     while True:
         data = f'{getSensorData():.3f}'
         mqtt.single(TOPIC, data, hostname = BROKER)
