@@ -28,7 +28,7 @@ mqtt.subscribe(f'{MQTT_TOPIC}/#') # Every device sends data to `MQTT_TOPIC/devic
 kafka = None
 try:
     kafka    = KafkaClient(hosts=f'{os.getenv("APACHE_KAFKA_IP_ADDRESS")}:{os.getenv("APACHE_KAFKA_PORT")}', socket_timeout_ms=7000, offsets_channel_socket_timeout_ms=3000)
-    topic    = kafka.topics[f'{KAFKA_TOPIC}']
+    topic    = kafka.topics[KAFKA_TOPIC]
     producer = topic.get_sync_producer()
 except:
     print('KAFKA CONNECTION ERROR!!!')
@@ -41,7 +41,7 @@ def on_message(client, userdata, msg):
         timestamp = datetime.datetime.now() # Necessary because of the `window` function in Apache Spark
         kafkaMessage = {
             'timestamp': str(timestamp), 
-            'device_name': f'{msg.topic[len(MQTT_TOPIC) + 1:]}', 
+            'device_name': str(msg.topic[len(MQTT_TOPIC) + 1:]), 
             'data': float(data)
         }
         
