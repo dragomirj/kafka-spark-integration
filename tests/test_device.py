@@ -1,5 +1,5 @@
 # *****************************************************************************
-#       Copyright (C) 2024 - Dragomir J. - Test all DEVICE.py scripts
+#  Dragomir J. - Test DEVICE.py scripts
 # *****************************************************************************
 import unittest
 import device1, device2
