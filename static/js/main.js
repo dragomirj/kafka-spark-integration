@@ -12,9 +12,9 @@ jQuery(function () {
 
     //Async - On every new message update information
     socket.on('emit', function (msg, cb) {
-        var device_name = msg.message.device_name;
-        $(`#${device_name}_data`).text(msg.message.data); //Show new data
-        $(`#${device_name}_time`).text(msg.message.start + " - " + msg.message.end); //Show the event's window of measurement
+        var device_name = msg.device_name;
+        $(`#${device_name}_data`).text(msg.data); //Show new data
+        $(`#${device_name}_time`).text(msg.window_start + " - " + msg.window_end); //Show the event's window of measurement
         $(`#${device_name}_count`).text(++event_counter_map[device_name]); //Update event counter
 
         //CALLBACK
