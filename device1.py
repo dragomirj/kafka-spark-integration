@@ -32,7 +32,7 @@ def getSerialInput():
 #   getSensorData - Get data from the MQ-2 sensor
 #############################################################################
 def getSensorData():
-    """ (RASPBERRY PI) Get CO value from MQ-2 sensor """
+    """ (RASPBERRY PI) Get the CO value from the MQ-2 sensor """
     input = getSerialInput()
     if not DEBUG and input is not None:
         if input.in_waiting > 0:
@@ -46,15 +46,19 @@ if __name__ == '__main__':
     if DEBUG:
         print('DEBUG MODE IS ON!!!\n')
 
-    # CHECK IF .ENV FILE EXISTS AND IF TOPIC IS NOT EMPTY
+    # CHECK IF .ENV FILE EXISTS AND IF THE TOPIC IS NOT EMPTY
     if TOPIC.split('/')[0] == 'None' or len(TOPIC.split('/')[0]) == 0:
         print('NO .ENV FILE OR TOPIC IS EMPTY!!!')
         exit(0)
 
     # INFINITE LOOP
     while True:
-        data = f'{getSensorData():.3f}'
-        mqtt.single(TOPIC, data, hostname = BROKER)
-        print(f'MQTT: {str(data).rjust(7)} to topic {TOPIC}')
-        if DEBUG: 
-            time.sleep(0.33) # SECONDS!
+        try:
+            data = f'{getSensorData():.3f}'
+            mqtt.single(TOPIC, data, hostname = BROKER)
+            print(f'MQTT: {str(data).rjust(7)} to topic {TOPIC}')
+            if DEBUG: 
+                time.sleep(0.33) # SECONDS!
+        except:
+            print('ERROR WHILE TRYING TO GET SENSOR DATA!')
+            exit(1)
