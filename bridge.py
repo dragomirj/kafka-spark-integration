@@ -19,7 +19,7 @@ KAFKA_TOPIC = os.getenv('APACHE_KAFKA_INPUT_TOPIC')
 #############################################################################
 mqtt = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 mqtt.connect(BROKER, 1883, 60)
-mqtt.subscribe(f'{MQTT_TOPIC}/#') # Every device sends data to `MQTT_TOPIC/device[N]`
+mqtt.subscribe(f'{MQTT_TOPIC}/+') # Every device sends data to `MQTT_TOPIC/device[N]`
 
 
 #############################################################################
